@@ -12,7 +12,7 @@ const Home = () => {
 
 
         <div className="w-full h-[50vh] mx-auto flex flex-row md:flex-col items-center justify-between gap-10">
-          <div className="flex-1 h-full w-40vw] text-center md:text-left flex flex-col items-center gap-5 shadow-xl rounded-4xl hover:shadow-2xl">
+          <div className="flex-1 h-124 md:h-full w-[40vw] text-center md:text-left flex flex-col items-center gap-5 shadow-xl rounded-4xl hover:shadow-2xl">
             <h1 className="p-10 text-2xl md:text-5xl font-extrabold text-indigo-700 mb-1 md:mb-4">
               Welcome to <span className="text-blue-600">MyNoteShare</span>
             </h1>
@@ -26,14 +26,14 @@ const Home = () => {
             </div>
           </div>
 
-          <div className='w-[50vw] h-full bg-zince-400 shadow-xl rounded-4xl hover:shadow-2xl overflow-hidden'>
+          <div className='md:block hidden w-[50vw] h-full bg-zince-400 shadow-xl rounded-4xl hover:shadow-2xl overflow-hidden'>
             <img className='object-cover' src={assets.home} alt="" />
           </div>
 
         </div>
 
 
-        <section className="max-w-6xl mx-auto mt-20">
+        <section className="max-w-6xl mx-auto mt-30">
           <h2 className="text-3xl font-bold text-center text-indigo-800 mb-12">
             Features Built For Students
           </h2>
@@ -61,12 +61,6 @@ const Home = () => {
             Ready to share your notes?
           </h2>
           <p className="text-gray-600 mb-6">Start contributing and help other students grow with your notes.</p>
-          <Link
-            to="/upload"
-            className="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-indigo-700 transition"
-          >
-            Upload Notes
-          </Link>
         </section>}
       </main>
     </>

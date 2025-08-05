@@ -29,8 +29,9 @@ const Profile = () => {
       }
     } catch (error) {
     }
+    finally{
+    }
   }
-
 
 
   const HandelDelete = async () => {

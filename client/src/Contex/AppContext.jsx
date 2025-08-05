@@ -22,7 +22,7 @@ export const AppContextProvider = (props) =>{
     
     const getUserData = async () => {          //GET USER DATA 
       try {
-        const response = await axios.get(`${backendURL}profile`);
+        const response = await axios.get(`${backendURL}profile`, {withCredentials:true});
         if(response.status === 200){
             setuserData(response.data);
         }
@@ -30,13 +30,15 @@ export const AppContextProvider = (props) =>{
             toast.error("Unable to fetch user data");
         }
       } catch (error) {
+        console.log(error);
         toast.error(error.message);
+
       }
     }
 
     const getAuthState = async () =>{    //GET THE AUTH STATE
       try {
-        const response = await axios.get(`${backendURL}is-authenticated`);
+        const response = await axios.get(`${backendURL}is-authenticated`, {withCredentials:true});
         if(response.status === 200  && response.data === true){
           setIsLoggedIn(true);
           await getUserData();

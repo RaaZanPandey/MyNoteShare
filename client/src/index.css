@@ -54,3 +54,26 @@ html {
   z-index: 10;
   animation: slideFadeIn 0.5s ease-out forwards;
 }
+
+.blink-dots::after {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  text-align: left;
+  animation: blink-dots-animation 1.5s steps(4, end) infinite;
+}
+
+@keyframes blink-dots-animation {
+  0%, 20% {
+    content: '';
+  }
+  40% {
+    content: '.';
+  }
+  60% {
+    content: '..';
+  }
+  80%, 100% {
+    content: '...';
+  }
+}

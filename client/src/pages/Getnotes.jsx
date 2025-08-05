@@ -9,10 +9,12 @@ const Getnotes = () => {
     const navigate = useNavigate();
     const [notes, setNotes] = useState([]);
     const { backendURL, userData } = useContext(AppContext);
+    const [loading, setLoading] = useState(false);
 
     const getNotes = async () => {
 
         try {
+            setLoading(true)
             const response = await axios.get(`${backendURL}notes/getallNote`, { withCredentials: true });
             if (response.status === 200) {
                 setNotes(response.data);
@@ -21,6 +23,10 @@ const Getnotes = () => {
             }
         } catch (error) {
             // toast.error("Unable to fetch notes");
+            setLoading(false);
+        }
+        finally{
+            setLoading(false);
         }
     }
 
@@ -32,17 +38,22 @@ const Getnotes = () => {
             {userData ? (
                 <div>
                     <span className='text-center'> <h4> Hii, {userData.name}</h4></span>
+                    
+                    {loading && 
+                     <div className="flex flex-wrap justify-center gap-8 p-6">
+                        <h2 className='blink-dots'>Fetching notes...</h2>
+                    </div>
+                    }
                     {notes.length < 1 ? 
                      <div className="flex flex-wrap justify-center gap-8 p-6">
                       <h2>Notes are not avilable.</h2>
                     </div>   
                     :
-                     <div className="flex flex-wrap justify-center gap-8 p-6">
+                    <div className="flex flex-wrap justify-center gap-8 p-6">
                         {notes.map((notes, index) => (
                             <div
                                 key={index}
-                                className="bg-white rounded-2xl shadow-md p-4 w-[18rem] hover:shadow-2xl transition duration-300"
-                            >
+                                className="bg-white rounded-2xl shadow-md p-4 w-[18rem] hover:shadow-2xl transition duration-300">
                                 <div className="flex justify-center mb-3">
                                     {notes.fileType === "pdf" && (
                                         <img

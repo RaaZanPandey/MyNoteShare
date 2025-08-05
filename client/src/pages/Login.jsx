@@ -52,10 +52,7 @@ const Login = () => {
   }
 
   return (
-<div
-  className="w-full h-full bg-no-repeat bg-center bg-cover"
-  style={{ backgroundImage: `url(${assets.background})` }}
->
+<div className="w-full h-full bg-no-repeat bg-center bg-cover" style={{ backgroundImage: `url(${assets.background})` }}>
 
   {/* Navbar */}
   <div className="h-[10vh] w-full px-6 flex justify-center items-center shadow-md bg-white/10 backdrop-blur-sm border-b border-white/20">
@@ -126,7 +123,7 @@ const Login = () => {
           disabled={loading}
           className="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md transition"
         >
-          {loading ? "Loading..." : isCreateAccount ? "Sign up" : "Login"}
+          {loading ? <p className='blink-dots'>Loading..</p> : isCreateAccount ? "Sign up" : "Login"}
         </button>
       </form>
 
@@ -137,8 +134,7 @@ const Login = () => {
             <span>Already have an account? </span>
             <span
               onClick={() => setIsCreateAccount(false)}
-              className="text-blue-600 hover:underline cursor-pointer"
-            >
+              className="text-blue-600 hover:underline cursor-pointer">
               Login here
             </span>
           </>

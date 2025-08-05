@@ -56,6 +56,7 @@ const Menubar = () => {
       if (response.status === 200) {
         setIsLoggedIn(false);
         setuserData(false);
+        localStorage.removeItem('userData');
         navigate("/");
       }
     } catch (error) {
@@ -108,8 +109,8 @@ const Menubar = () => {
 
       <div ref={nav} className={`${window.innerWidth > 768 ? 'mt-0 mr-2':'mt-4 mr-0'} fixed md:w-full w-[45%] smooth-appear  transition-transform duration-300 ease-in-out z-40`}>
         <div
-          className={`top-0 md:ml-0 md:left-0 h-[50vh] md:h-[10vh] w-full md:w-full bg-blue-400 px-5 flex justify-between items-center md:flex-row flex-col
-             transition-transform duration-300 ease-in-out z-40
+          className={`top-0 md:ml-0 md:left-0 h-[53vh] md:h-[10vh] w-full md:w-full bg-blue-400 px-5 flex justify-between items-center md:flex-row flex-col 
+             transition-transform duration-300 ease-in-out z-40 py-3 md:py-0
              ${open ? 'translate-x-0' : '-translate-x-full'}`}>
 
           <div className="flex items-center rounded-full ">
@@ -145,7 +146,7 @@ const Menubar = () => {
               )}
             </div>
           ) : (
-            <div className='btn btn-outline-dark rounded-pill px-3 items-center justify-center' onClick={() => navigate("/login")}>
+            <div className='btn btn-outline-dark rounded-pill md:px-3 items-center justify-center w-24 h-10 mb-2' onClick={() => navigate("/login")}>
               Login <span className=' justify-center items-center'><i className="ri-arrow-right-line"></i></span>
             </div>
           )}
